@@ -1,10 +1,256 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Joglock - Titip Barang Kos</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background: #0d47a1;
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header .tagline {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #ffca28;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+
+    .cta:hover {
+      background: #ffd54f;
+    }
+
+    section {
+      padding: 2rem;
+      background: #fff;
+      margin: 1rem auto;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    section h2 {
+      margin-bottom: 1rem;
+      color: #0d47a1;
+    }
+
+    ol li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Fasilitas */
+    .facilities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .facility-card {
+      flex: 1 1 280px;
+      background-color: #f1f1f1;
+      padding: 1.5rem;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .facility-card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 1rem;
+    }
+
+    .facility-card h3 {
+      color: #0d47a1;
+      margin-bottom: 0.5rem;
+    }
+
+    .facility-action {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input,
+    form textarea {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background: #0d47a1;
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #1565c0;
+    }
+
+    /* Testimoni */
+    #testimoni {
+      background-color: #f9f9f9;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    #testimoni h2 {
+      color: #0d47a1;
+      margin-bottom: 2rem;
+    }
+
+    .testimoni-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .testimoni-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      max-width: 300px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .testimoni-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimoni-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .testimoni-card p {
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimoni-card h4 {
+      font-weight: normal;
+      color: #555;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0d47a1;
+      color: white;
+      padding: 2rem 1rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 1rem;
+    }
+
+    .footer-info p {
+      margin: 0.3rem 0;
+    }
+
+    .footer-info a {
+      color: #ffca28;
+      text-decoration: none;
+    }
+
+    .footer-info a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: right;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 1rem;
+      color: #ccc;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-top {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .footer-links {
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -12,21 +258,17 @@
     <h1>Joglock</h1>
     <p class="tagline">Titip Barang Kos Jadi Aman dan Gampang</p>
     <a href="#how" class="cta">LIHAT CARA KERJA</a>
-    <a href="#form" class="cta">TITIP SEKARANG</a>
+    <a href="#how" class="cta">TITIP SEKARANG</a>
   </header>
 
-  <section id="how" class="cara-kerja-section">
-    <div class="cara-kerja-wrapper">
-      <div class="cara-kerja-content">
-        <h2>Cara Kerja</h2>
-        <ol>
-          <li>Isi formulir online dan pilih paket serta jadwal penjemputan</li>
-          <li>Tim JOGLOCK menjemput barang di lokasi kos</li>
-          <li>Barang disimpan di gudang yang aman dan terpantau</li>
-          <li>Barang diantar kembali sesuai alamat di formulir</li>
-        </ol>
-      </div>
-    </div>
+  <section id="how">
+    <h2>Cara Kerja</h2>
+    <ol>
+      <li>Isi formulir online dan pilih paket serta jadwal penjemputan</li>
+      <li>Tim JOGLOCK menjemput barang di lokasi kos</li>
+      <li>Barang disimpan di gudang yang aman dan terpantau</li>
+      <li>Barang diantar kembali sesuai alamat di formulir</li>
+    </ol>
   </section>
 
   <section id="facilities">
